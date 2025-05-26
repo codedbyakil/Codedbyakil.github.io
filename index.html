@@ -1,41 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Akil's Dev Page</title>
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Akil's Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@500&display=swap');
+
+  /* Base */
+  body {
+    background: #0d0d0d;
+    color: #eee;
+    font-family: 'Orbitron', sans-serif;
+    margin: 40px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    color: #ff0000;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px #990000;
+  }
+
+  h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    border-bottom: 3px solid #ff0000;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+  }
+
+  p, li {
+    font-size: 1.25rem;
+    color: #ddd;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul li {
+    background: #1a0000;
+    margin-bottom: 12px;
+    padding: 12px 20px;
+    border-left: 6px solid #ff0000;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(255, 0, 0, 0.4);
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+  ul li:hover {
+    background: #330000;
+  }
+
+  a {
+    font-family: 'Orbitron', sans-serif;
+    color: #ff2222;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  a:hover {
+    border-color: #ff0000;
+    color: #ff5555;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, #ff0000, #660000);
+    color: white;
+    font-weight: 900;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff0000cc;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    user-select: none;
+  }
+  .btn:hover {
+    background: linear-gradient(45deg, #ff4444, #aa0000);
+    box-shadow: 0 0 25px #ff4444dd;
+  }
+
+  /* Container */
+  section {
+    max-width: 800px;
+    margin-bottom: 60px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    color: #550000;
+    font-weight: 600;
+    border-top: 1px solid #440000;
+    padding: 15px 10px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Responsive */
+  @media(max-width: 600px) {
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-    }
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: inline-block;
+      margin: 20px 15px;
     }
     h1 {
-      color: #007bff;
+      font-size: 3rem;
+      letter-spacing: 4px;
     }
-    a {
-      color: #555;
-      text-decoration: none;
+    h2 {
+      font-size: 2rem;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hi, I'm Akil</h1>
-    <p>I love tech and coding!</p>
-    <p>Check out my GitHub:</p>
-    <p><a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
-  </div>
+
+<h1>Akil</h1>
+
+<section>
+  <h2>About Me</h2>
+  <p>Passionate about tech, especially modded apps, m3u playlists, and streaming TV channels. I love blending urban art vibes with cutting-edge streaming tech.</p>
+</section>
+
+<section>
+  <h2>My Interests</h2>
+  <ul>
+    <li>m3u Playlists for IPTV</li>
+    <li>Modded Android Apps</li>
+    <li>OSS TV Channels & Streaming</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:akil@example.com">akil@example.com</a></p>
+  <p>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a></p>
+  <button class="btn" onclick="window.location.href='mailto:akil@example.com'">Email Me</button>
+</section>
+
+<footer>
+  &copy; 2025 Akil. All rights reserved.
+</footer>
+
 </body>
 </html>

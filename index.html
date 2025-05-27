@@ -2,88 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Akil Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
       font-family: 'Poppins', sans-serif;
       background-color: #000;
       color: #fff;
-      line-height: 1.6;
-      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
     }
+
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 50px 5%;
-      max-width: 700px;
+      padding: 5vw;
+      max-width: 90vw;
       width: 100%;
       background: #111;
       border-radius: 15px;
       box-shadow: 0 0 20px #ff4444;
     }
+
     .hero img {
       border-radius: 50%;
-      width: 220px;
-      height: 220px;
+      width: 30vw;
+      height: 30vw;
+      max-width: 220px;
+      max-height: 220px;
       object-fit: cover;
       border: 6px solid #ff4444;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       box-shadow: 0 0 20px #ff4444;
       background-color: #440000;
     }
+
     .text h2 {
       color: #ff4444;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 10px;
       font-weight: 700;
       letter-spacing: 1px;
     }
+
     .text h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: #eee;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
+
     .text p {
       font-size: 1rem;
       color: #ccc;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       padding: 0 10px;
     }
+
     .socials {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-top: 10px;
+      flex-wrap: wrap;
     }
+
     .socials a {
       background: #222;
       color: #ff4444;
-      font-size: 1.3rem;
-      text-decoration: none;
-      padding: 14px;
+      font-size: 1.2rem;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 50%;
-      display: inline-block;
+      text-decoration: none;
       transition: 0.3s;
     }
+
     .socials a:hover {
       background: #ff4444;
       color: #000;
       transform: scale(1.1);
     }
-    @media (min-width: 768px) {
-      .hero img {
-        width: 260px;
-        height: 260px;
+
+    @media (orientation: landscape) {
+      .hero {
+        max-height: 90vh;
       }
     }
   </style>

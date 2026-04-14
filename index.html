@@ -1,125 +1,1348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Akil Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thalapathy Vijay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        :root {
+            --bg-dark: #050505;
+            --bg-card: rgba(20, 20, 35, 0.4);
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --tvk-red: #dc2626;
+            --tvk-red-dark: #b91c1c;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a8b0;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 5vw;
-      max-width: 90vw;
-      width: 100%;
-      background: #111;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #ff4444;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .hero img {
-      border-radius: 50%;
-      width: 30vw;
-      height: 30vw;
-      max-width: 220px;
-      max-height: 220px;
-      object-fit: cover;
-      border: 6px solid #ff4444;
-      margin-bottom: 20px;
-      box-shadow: 0 0 20px #ff4444;
-      background-color: #440000;
-    }
+        body {
+            font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    .text h2 {
-      color: #ff4444;
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+        /* Animated mesh gradient background */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(220,38,38,0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(245,158,11,0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(220,38,38,0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(245,158,11,0.2) 0px, transparent 50%),
+                #050505;
+            z-index: -2;
+            animation: meshMove 20s ease infinite;
+        }
 
-    .text h3 {
-      font-size: 1.2rem;
-      color: #eee;
-      margin-bottom: 15px;
-    }
+        @keyframes meshMove {
+            0%, 100% { 
+                background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%;
+            }
+            25% { 
+                background-position: 10% 10%, 90% 10%, 90% 90%, 10% 90%;
+            }
+            50% { 
+                background-position: 5% 5%, 95% 5%, 95% 95%, 5% 95%;
+            }
+            75% { 
+                background-position: 15% 15%, 85% 15%, 85% 85%, 15% 85%;
+            }
+        }
 
-    .text p {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 20px;
-      padding: 0 10px;
-    }
+        .noise {
+            position: fixed;
+            inset: 0;
+            opacity: 0.015;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
 
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: #050505;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.4s ease;
+        }
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader {
+            width: 60px;
+            height: 60px;
+            position: relative;
+        }
+        .loader::before,
+        .loader::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid transparent;
+        }
+        .loader::before {
+            border-top-color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+        .loader::after {
+            border-right-color: var(--tvk-red);
+            animation: spin 1.5s linear infinite reverse;
+        }
+        @keyframes spin { 
+            to { transform: rotate(360deg); }
+        }
+        .loading-text { 
+            color: var(--accent); 
+            font-size: 0.9rem; 
+            letter-spacing: 3px;
+            margin-top: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
 
-    .socials a {
-      background: #222;
-      color: #ff4444;
-      font-size: 1.2rem;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+        .container { 
+            max-width: 1600px; 
+            margin: 0 auto; 
+            padding: 2rem; 
+        }
+        
+        .glass-card {
+            background: rgba(10, 10, 15, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2.5rem;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px -12px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
 
-    .socials a:hover {
-      background: #ff4444;
-      color: #000;
-      transform: scale(1.1);
-    }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            padding: 4rem;
+            min-height: 700px;
+            align-items: center;
+        }
+        .hero-background {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 65%;
+            height: 100%;
+            opacity: 0.7;
+            mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            pointer-events: none;
+        }
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+            filter: contrast(1.1) saturate(1.1);
+        }
+        .hero-content { 
+            z-index: 2; 
+            position: relative; 
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(220,38,38,0.15);
+            border: 1px solid rgba(220,38,38,0.3);
+            border-radius: 50px;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .status-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+            box-shadow: 0 0 10px #ef4444;
+        }
+        @keyframes pulse-dot { 
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
 
-    @media (orientation: landscape) {
-      .hero {
-        max-height: 90vh;
-      }
-    }
-  </style>
+        .role {
+            color: var(--accent);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .name {
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 0.95;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 50%, var(--tvk-red) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.8rem;
+            letter-spacing: -2px;
+        }
+        .tamil-text {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .stats-row {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .stat-item {
+            position: relative;
+        }
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            right: -1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--border), transparent);
+        }
+        .stat-item:last-child::after {
+            display: none;
+        }
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .stat-label { 
+            font-size: 0.7rem; 
+            color: var(--text-secondary); 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            margin-top: 0.3rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--tvk-red), #991b1b);
+            color: white;
+            box-shadow: 0 4px 20px rgba(220,38,38,0.3);
+        }
+        .btn-primary:hover { 
+            transform: translateY(-3px) scale(1.02); 
+            box-shadow: 0 10px 30px rgba(220,38,38,0.4);
+        }
+        .btn-secondary {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        .btn-secondary:hover { 
+            border-color: var(--accent); 
+            background: rgba(245,158,11,0.1); 
+            transform: translateY(-3px);
+        }
+
+        .tvk-badge {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Nav Tabs - Simplified */
+        .nav-tabs {
+            display: flex;
+            gap: 0.8rem;
+            padding: 1.2rem 2rem;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid var(--glass-border);
+            overflow-x: auto;
+            scrollbar-width: none;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        .nav-tab {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .nav-tab.active {
+            background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(245,158,11,0.1));
+            border-color: rgba(220,38,38,0.4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(220,38,38,0.2);
+        }
+        .nav-tab:hover:not(.active) {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+        }
+
+        .content-section { 
+            display: none; 
+            padding: 3rem; 
+            animation: fadeIn 0.4s ease-out;
+        }
+        .content-section.active { 
+            display: block; 
+        }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #fff, var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Advanced Carousel */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 2rem 1rem;
+            margin: 0 -1rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-track:active {
+            cursor: grabbing;
+        }
+
+        /* Advanced Glass Card */
+        .movie-card {
+            flex: 0 0 auto;
+            width: 320px;
+            scroll-snap-align: center;
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .movie-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.1) 0%,
+                transparent 50%,
+                rgba(255,255,255,0.05) 100%
+            );
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .movie-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(
+                135deg,
+                rgba(245,158,11,0.3) 0%,
+                transparent 30%,
+                transparent 70%,
+                rgba(220,38,38,0.3) 100%
+            );
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 30px 60px -15px rgba(0,0,0,0.5),
+                0 0 30px rgba(245,158,11,0.1);
+            border-color: rgba(245,158,11,0.3);
+        }
+
+        .movie-card:hover::after {
+            opacity: 1;
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2/3;
+            overflow: hidden;
+        }
+
+        .card-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0.8;
+            transition: all 0.4s ease;
+        }
+
+        .movie-card:hover .card-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card-year {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--glass-border);
+            z-index: 3;
+        }
+
+        .card-verdict {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+            border: 1px solid;
+            z-index: 3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .verdict-blockbuster { 
+            background: rgba(34,197,94,0.25); 
+            color: #4ade80; 
+            border-color: rgba(74,222,128,0.4);
+            box-shadow: 0 4px 15px rgba(34,197,94,0.2);
+        }
+        .verdict-superhit { 
+            background: rgba(245,158,11,0.25); 
+            color: #fbbf24; 
+            border-color: rgba(251,191,36,0.4);
+            box-shadow: 0 4px 15px rgba(245,158,11,0.2);
+        }
+        .verdict-hit { 
+            background: rgba(59,130,246,0.25); 
+            color: #60a5fa; 
+            border-color: rgba(96,165,250,0.4);
+        }
+        .verdict-average { 
+            background: rgba(107,114,128,0.3); 
+            color: #d1d5db; 
+            border-color: rgba(209,213,219,0.3);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .card-role {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .card-boxoffice {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(245,158,11,0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.75rem;
+            border: 1px solid rgba(245,158,11,0.2);
+        }
+
+        /* Filters */
+        .filter-bar {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-chip {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-chip.active {
+            background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(220,38,38,0.1));
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 4px 15px rgba(245,158,11,0.15);
+        }
+
+        .filter-chip:hover:not(.active) {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: auto;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 20px rgba(245,158,11,0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        /* About Section with Stats */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .about-text strong {
+            color: var(--accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--tvk-red));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(245,158,11,0.3);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .stat-card-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--tvk-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .achievements-section {
+            margin-top: 3rem;
+        }
+
+        .achievements-title {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .achievement-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .achievement-tag {
+            background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(220,38,38,0.05));
+            border: 1px solid rgba(245,158,11,0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-tag:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(245,158,11,0.1);
+        }
+
+        .achievement-tag i {
+            color: var(--accent);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                min-height: auto;
+            }
+            .hero-background {
+                width: 100%;
+                opacity: 0.15;
+            }
+            .name {
+                font-size: 3.5rem;
+            }
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            .movie-card {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .glass-card {
+                border-radius: 1.5rem;
+            }
+            .content-section {
+                padding: 1.5rem;
+            }
+            .name {
+                font-size: 2.8rem;
+            }
+            .stats-row {
+                gap: 1.5rem;
+            }
+            .stat-item::after {
+                display: none;
+            }
+            .search-box {
+                min-width: 100%;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .movie-card {
+                width: 260px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .stat-card {
+                padding: 1.2rem;
+            }
+            .stat-card-value {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
-  <section class="hero">
-    <img id="profile-image" src="akil.png" alt="Akil">
-    <div class="text">
-      <h2>Hi, I'm Akil</h2>
-      <h3>Tech Explorer | IPTV | Modded Apps</h3>
-      <p>I explore custom Android TV setups, create modded apps, and work with IPTV & M3U streaming tech. Follow me to see cool tools and tech I discover!</p>
-      <div class="socials">
-        <a href="https://instagram.com/Thamizhan_tv_hub" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/codedbyakil" title="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-        <a href="https://t.me/tamizhantvhub" title="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://codedbyakil.github.io" title="Website" target="_blank" rel="noopener"><i class="fas fa-globe"></i></a>
-      </div>
+    <div class="bg-mesh"></div>
+    <div class="noise"></div>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">LOADING</div>
     </div>
-  </section>
+
+    <div class="container">
+        <div class="glass-card">
+            <!-- Hero -->
+            <div class="hero">
+                <div class="hero-background">
+                    <img src="flag.png" alt="TVK" onerror="this.style.display='none'">
+                </div>
+                <div class="hero-content">
+                    <div class="status-badge">
+                        <i class="fas fa-film"></i>
+                        <span id="heroTotalMovies">69</span> Films • 
+                        <span id="heroDebutYear">1992</span>–<span id="heroFinalYear">2026</span>
+                    </div>
+                    <div class="role">Actor • Dancer • Leader • Politician</div>
+                    <h1 class="name">Thalapathy<br>Vijay</h1>
+                    <div class="tamil-text">தளபதி விஜய் — The Complete Journey</div>
+                    <div class="stats-row" id="heroStats"></div>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="document.querySelector('.nav-tabs').scrollIntoView({behavior:'smooth'})">
+                            <i class="fas fa-play"></i> Explore Films
+                        </button>
+                        <button class="btn-secondary" onclick="switchTab('about', this)">
+                            <i class="fas fa-user"></i> Know More
+                        </button>
+                    </div>
+                </div>
+                <div class="tvk-badge">
+                    <div style="font-size:2rem;">🚩</div>
+                    <div>
+                        <div style="font-weight:700; font-size:1rem;" id="partyName">Tamizha Vetri Kazhagam</div>
+                        <div style="font-size:0.75rem; color:var(--text-secondary);" id="partyYear">Est. 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nav -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="switchTab('films', this)">
+                    <i class="fas fa-film"></i> Films
+                </button>
+                <button class="nav-tab" onclick="switchTab('about', this)">
+                    <i class="fas fa-crown"></i> Legacy
+                </button>
+            </div>
+
+            <!-- Films Section -->
+            <div id="films" class="content-section active">
+                <h2 class="section-title"><i class="fas fa-clapperboard"></i> Filmography</h2>
+                
+                <div class="filter-bar">
+                    <button class="filter-chip active" data-filter="all">All Films</button>
+                    <button class="filter-chip" data-filter="blockbuster">Blockbusters</button>
+                    <button class="filter-chip" data-filter="2020s">2020s</button>
+                    <button class="filter-chip" data-filter="2010s">2010s</button>
+                    <button class="filter-chip" data-filter="2000s">2000s</button>
+                    <button class="filter-chip" data-filter="90s">1990s</button>
+                    
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search movies, roles, directors...">
+                    </div>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack"></div>
+                </div>
+
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-film" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <p>No movies found matching your search.</p>
+                </div>
+            </div>
+
+            <!-- About Section with Stats -->
+            <div id="about" class="content-section">
+                <h2 class="section-title"><i class="fas fa-star"></i> The Phenomenon</h2>
+                
+                <div class="about-container">
+                    <div class="about-text" id="aboutText"></div>
+                    
+                    <div class="stats-grid" id="statsGrid"></div>
+                </div>
+
+                <div class="achievements-section">
+                    <div class="achievements-title">
+                        <i class="fas fa-trophy"></i> Major Achievements
+                    </div>
+                    <div class="achievement-tags" id="achievementTags"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer style="text-align:center; padding:3rem 2rem; color:var(--text-secondary); font-size: 0.85rem;">
+            <p style="margin-bottom: 0.5rem;"><i class="fas fa-heart" style="color:var(--tvk-red);"></i> Thalapathy Vijay • 69 Films • 34 Years of Excellence <i class="fas fa-heart" style="color:var(--tvk-red);"></i></p>
+            <p style="opacity: 0.6;">A tribute to the GOAT of Tamil Cinema</p>
+        </footer>
+    </div>
+
+    <script>
+        const appData = {
+            "metadata": {
+                "totalMovies": 69,
+                "debutYear": 1992,
+                "finalYear": 2026,
+                "highestGrosser": "₹615Cr",
+                "highestMovie": "Leo",
+                "lastUpdated": "2024",
+                "lifetimeGross": "₹3100+Cr"
+            },
+            "about": {
+                "fullName": "Joseph Vijay Chandrasekhar",
+                "born": "June 22, 1974",
+                "nickname": "Thalapathy",
+                "occupation": "Actor, Dancer, Singer, Politician",
+                "debut": "Naalaiya Theerpu (1992)",
+                "politicalParty": "Tamizha Vetri Kazhagam (TVK)",
+                "partyFounded": "2024",
+                "description": "Joseph Vijay Chandrasekhar, known mononymously as Vijay and affectionately called 'Thalapathy' (Commander) by millions, is the undisputed king of Tamil cinema. With 69 films spanning over three decades, he has redefined stardom in Indian cinema. From his lead debut in 1992 to becoming the highest-grossing Tamil actor of all time, Vijay's journey is nothing short of phenomenal. His films like Ghilli, Thuppakki, Kaththi, Mersal, Bigil, Master, and the record-shattering Leo (₹615Cr worldwide) have created box office history. Beyond cinema, he launched his political party Tamizha Vetri Kazhagam in 2024, aiming to bring positive change to Tamil Nadu.",
+                "achievements": [
+                    "12+ All-Time Blockbusters",
+                    "₹3000+ Crore Lifetime Collection",
+                    "Highest Grossing Tamil Film 2023",
+                    "5 Consecutive ₹200Cr+ Films",
+                    "Highest Paid Actor in South India",
+                    "Doctorate from MGR University",
+                    "3 Tamil Nadu State Awards",
+                    "UNICEF Celebrity Advocate"
+                ]
+            },
+            "movies": [
+                { "poster": "001", "year": 1992, "title": "Naalaiya Theerpu", "role": "Vijay", "director": "S.A. Chandrasekhar", "verdict": "Average", "category": "90s", "boxOffice": "₹2Cr" },
+                { "poster": "002", "year": 1993, "title": "Sendhoorapandi", "role": "Vijay", "director": "S.A. Chandrasekhar", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "003", "year": 1994, "title": "Rasigan", "role": "Vijay", "director": "S.A. Chandrasekhar", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "004", "year": 1995, "title": "Deva", "role": "Deva", "director": "S.A. Chandrasekhar", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "005", "year": 1995, "title": "Raajavin Paarvayile", "role": "Raja", "director": "Janaki Soundar", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "006", "year": 1995, "title": "Vishnu", "role": "Vishnu", "director": "S.A. Chandrasekhar", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "007", "year": 1995, "title": "Chandralekha", "role": "Rahim", "director": "Nambiraj", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "008", "year": 1996, "title": "Coimbatore Mappillai", "role": "Balu", "director": "C. Ranganathan", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "009", "year": 1996, "title": "Poove Unakkaga", "role": "Raja", "director": "Vikraman", "verdict": "Blockbuster", "category": "90s", "boxOffice": "₹8Cr" },
+                { "poster": "010", "year": 1996, "title": "Vasantha Vaasal", "role": "Vijay", "director": "M.R.", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "011", "year": 1996, "title": "Maanbumigu Maanavan", "role": "Sivaraj", "director": "S.A. Chandrasekhar", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "012", "year": 1996, "title": "Selva", "role": "Selvan", "director": "A. Venkatesh", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "013", "year": 1997, "title": "Kaalamellam Kaathiruppen", "role": "Kannan", "director": "R. Sundarajan", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "014", "year": 1997, "title": "Love Today", "role": "Ganesh", "director": "Balasekaran", "verdict": "Super Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "015", "year": 1997, "title": "Once More", "role": "Vijay", "director": "S.A. Chandrasekhar", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "016", "year": 1997, "title": "Nerrukku Ner", "role": "Vijay", "director": "Vasanth", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "017", "year": 1997, "title": "Kadhalukku Mariyadhai", "role": "Jeeva", "director": "Fazil", "verdict": "Blockbuster", "category": "90s", "boxOffice": "" },
+                { "poster": "018", "year": 1998, "title": "Ninaithen Vandhai", "role": "Gokul", "director": "K. Selva Bharathy", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "019", "year": 1998, "title": "Priyamudan", "role": "Vasanth", "director": "Vincent Selva", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "020", "year": 1998, "title": "Nilaave Vaa", "role": "Siluvai", "director": "A. Venkatesh", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "021", "year": 1999, "title": "Thulladha Manamum Thullum", "role": "Kutty", "director": "Ezhil", "verdict": "Blockbuster", "category": "90s", "boxOffice": "" },
+                { "poster": "022", "year": 1999, "title": "Endrendrum Kadhal", "role": "Vijay", "director": "Manoj Bhatnagar", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "023", "year": 1999, "title": "Nenjinile", "role": "Karna", "director": "S.A. Chandrasekhar", "verdict": "Average", "category": "90s", "boxOffice": "" },
+                { "poster": "024", "year": 1999, "title": "Minsara Kanna", "role": "Kannan/Kasi", "director": "K.S. Ravikumar", "verdict": "Hit", "category": "90s", "boxOffice": "" },
+                { "poster": "025", "year": 2000, "title": "Kannukkul Nilavu", "role": "Gautham", "director": "Fazil", "verdict": "Average", "category": "2000s", "boxOffice": "" },
+                { "poster": "026", "year": 2000, "title": "Kushi", "role": "Shiva", "director": "S.J. Suryah", "verdict": "Blockbuster", "category": "2000s", "boxOffice": "₹18Cr" },
+                { "poster": "027", "year": 2000, "title": "Priyamaanavale", "role": "Vijay", "director": "K. Selva Bharathy", "verdict": "Super Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "028", "year": 2001, "title": "Friends", "role": "Aravindhan", "director": "Siddique", "verdict": "Super Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "029", "year": 2001, "title": "Badri", "role": "Badri", "director": "P.A. Arun Prasad", "verdict": "Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "030", "year": 2001, "title": "Shahjahan", "role": "Ashok", "director": "K.S. Ravi", "verdict": "Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "031", "year": 2002, "title": "Thamizhan", "role": "Surya", "director": "A. Majid", "verdict": "Average", "category": "2000s", "boxOffice": "" },
+                { "poster": "032", "year": 2002, "title": "Youth", "role": "Shiva", "director": "Vincent Selva", "verdict": "Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "033", "year": 2002, "title": "Bhagavathi", "role": "Bhagavathi", "director": "A. Venkatesh", "verdict": "Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "034", "year": 2003, "title": "Vaseegara", "role": "Boopathi", "director": "K. Selva Bharathy", "verdict": "Hit", "category": "2000s", "boxOffice": "₹22.5Cr" },
+                { "poster": "035", "year": 2003, "title": "Puthiya Geethai", "role": "Sarathy", "director": "Jagan", "verdict": "Average", "category": "2000s", "boxOffice": "" },
+                { "poster": "036", "year": 2003, "title": "Thirumalai", "role": "Thirumalai", "director": "Ramana", "verdict": "Blockbuster", "category": "2000s", "boxOffice": "₹25.3Cr" },
+                { "poster": "037", "year": 2004, "title": "Udhaya", "role": "Udhaya", "director": "A. Venkatesh", "verdict": "Flop", "category": "2000s", "boxOffice": "" },
+                { "poster": "038", "year": 2004, "title": "Ghilli", "role": "Velu", "director": "Dharani", "verdict": "All Time Blockbuster", "category": "2000s", "boxOffice": "₹52.7Cr" },
+                { "poster": "039", "year": 2004, "title": "Madurey", "role": "Maduravel", "director": "Ramana Madhesh", "verdict": "Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "040", "year": 2005, "title": "Thirupaachi", "role": "Sivagiri", "director": "Perarasu", "verdict": "Blockbuster", "category": "2000s", "boxOffice": "₹36.6Cr" },
+                { "poster": "041", "year": 2005, "title": "Sukran", "role": "Cameo", "director": "S.A. Chandrasekhar", "verdict": "Cameo", "category": "2000s", "boxOffice": "" },
+                { "poster": "042", "year": 2005, "title": "Sachein", "role": "Sachein", "director": "John Mahendran", "verdict": "Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "043", "year": 2005, "title": "Sivakasi", "role": "Sivakasi", "director": "Perarasu", "verdict": "Super Hit", "category": "2000s", "boxOffice": "" },
+                { "poster": "044", "year": 2006, "title": "Aadhi", "role": "Aadhi", "director": "Ramana", "verdict": "Average", "category": "2000s", "boxOffice": "" },
+                { "poster": "045", "year": 2007, "title": "Pokkiri", "role": "Tamizh", "director": "Prabhu Deva", "verdict": "All Time Blockbuster", "category": "2000s", "boxOffice": "₹48Cr" },
+                { "poster": "046", "year": 2007, "title": "Azhagiya Tamil Magan", "role": "Guru/Prasad", "director": "Bharathan", "verdict": "Average", "category": "2000s", "boxOffice": "" },
+                { "poster": "047", "year": 2008, "title": "Kuruvi", "role": "Velu", "director": "Dharani", "verdict": "Hit", "category": "2000s", "boxOffice": "₹32Cr" },
+                { "poster": "048", "year": 2009, "title": "Villu", "role": "Pugazh", "director": "Prabhu Deva", "verdict": "Average", "category": "2000s", "boxOffice": "" },
+                { "poster": "049", "year": 2009, "title": "Vettaikaaran", "role": "Ravi", "director": "Babu Sivan", "verdict": "Super Hit", "category": "2000s", "boxOffice": "₹43Cr" },
+                { "poster": "050", "year": 2010, "title": "Sura", "role": "Sura", "director": "S.P. Rajkumar", "verdict": "Average", "category": "2010s", "boxOffice": "₹75Cr" },
+                { "poster": "051", "year": 2011, "title": "Kaavalan", "role": "Bhoominathan", "director": "Siddique", "verdict": "Super Hit", "category": "2010s", "boxOffice": "₹100Cr" },
+                { "poster": "052", "year": 2011, "title": "Velayudham", "role": "Velu", "director": "Mohan Raja", "verdict": "Hit", "category": "2010s", "boxOffice": "₹65.6Cr" },
+                { "poster": "053", "year": 2012, "title": "Nanban", "role": "Panchavan", "director": "Shankar", "verdict": "Blockbuster", "category": "2010s", "boxOffice": "₹130Cr" },
+                { "poster": "054", "year": 2012, "title": "Thuppakki", "role": "Jagadish", "director": "Murugadoss", "verdict": "All Time Blockbuster", "category": "2010s", "boxOffice": "₹180Cr" },
+                { "poster": "055", "year": 2013, "title": "Thalaivaa", "role": "Vishwa", "director": "A.L. Vijay", "verdict": "Average", "category": "2010s", "boxOffice": "₹80Cr" },
+                { "poster": "056", "year": 2014, "title": "Jilla", "role": "Shakthi", "director": "Neason", "verdict": "Super Hit", "category": "2010s", "boxOffice": "" },
+                { "poster": "057", "year": 2014, "title": "Kaththi", "role": "Kathiresan", "director": "Murugadoss", "verdict": "All Time Blockbuster", "category": "2010s", "boxOffice": "₹132Cr" },
+                { "poster": "058", "year": 2015, "title": "Puli", "role": "Marudheeran", "director": "Chimbu Deven", "verdict": "Flop", "category": "2010s", "boxOffice": "₹101Cr" },
+                { "poster": "059", "year": 2016, "title": "Theri", "role": "Joseph", "director": "Atlee", "verdict": "Blockbuster", "category": "2010s", "boxOffice": "₹153Cr" },
+                { "poster": "060", "year": 2017, "title": "Bairavaa", "role": "Bairavaa", "director": "Bharathan", "verdict": "Hit", "category": "2010s", "boxOffice": "₹116Cr" },
+                { "poster": "061", "year": 2017, "title": "Mersal", "role": "Vetri/Maaran", "director": "Atlee", "verdict": "All Time Blockbuster", "category": "2010s", "boxOffice": "₹253Cr" },
+                { "poster": "062", "year": 2018, "title": "Sarkar", "role": "Sundar", "director": "Murugadoss", "verdict": "Blockbuster", "category": "2010s", "boxOffice": "₹252Cr" },
+                { "poster": "063", "year": 2019, "title": "Bigil", "role": "Michael", "director": "Atlee", "verdict": "All Time Blockbuster", "category": "2010s", "boxOffice": "₹305Cr" },
+                { "poster": "064", "year": 2021, "title": "Master", "role": "JD", "director": "Lokesh Kanagaraj", "verdict": "Blockbuster", "category": "2020s", "boxOffice": "₹225Cr" },
+                { "poster": "065", "year": 2022, "title": "Beast", "role": "Veera", "director": "Nelson", "verdict": "Hit", "category": "2020s", "boxOffice": "₹216Cr" },
+                { "poster": "066", "year": 2023, "title": "Varisu", "role": "Vijay", "director": "Vamshi", "verdict": "Blockbuster", "category": "2020s", "boxOffice": "₹300Cr+" },
+                { "poster": "067", "year": 2023, "title": "Leo", "role": "Parthiban", "director": "Lokesh", "verdict": "All Time Blockbuster", "category": "2020s", "boxOffice": "₹615Cr" },
+                { "poster": "068", "year": 2024, "title": "The Greatest of All Time", "role": "Gandhi/Sanjay", "director": "Venkat Prabhu", "verdict": "Blockbuster", "category": "2020s", "boxOffice": "₹455Cr" },
+                { "poster": "069", "year": 2026, "title": "Jana Nayagan", "role": "TVK", "director": "H Vintoth", "verdict": "Upcoming", "category": "2020s", "boxOffice": "" }
+            ]
+        };
+
+        function getVerdictClass(verdict) {
+            if(verdict === 'All Time Blockbuster' || verdict === 'Blockbuster') return 'verdict-blockbuster';
+            if(verdict === 'Super Hit') return 'verdict-superhit';
+            if(verdict === 'Hit') return 'verdict-hit';
+            return 'verdict-average';
+        }
+
+        function initHero() {
+            const meta = appData.metadata;
+            document.getElementById('heroTotalMovies').innerText = meta.totalMovies;
+            document.getElementById('heroDebutYear').innerText = meta.debutYear;
+            document.getElementById('heroFinalYear').innerText = meta.finalYear;
+            document.getElementById('partyName').innerText = appData.about.politicalParty;
+            document.getElementById('partyYear').innerText = `Est. ${appData.about.partyFounded}`;
+            
+            document.getElementById('heroStats').innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${meta.totalMovies}</div>
+                    <div class="stat-label">Films</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${meta.debutYear}</div>
+                    <div class="stat-label">Debut</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${meta.highestGrosser}</div>
+                    <div class="stat-label">Peak</div>
+                </div>
+            `;
+        }
+
+        function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            track.innerHTML = appData.movies.map(m => `
+                <div class="movie-card" 
+                     data-title="${m.title.toLowerCase()}"
+                     data-role="${m.role.toLowerCase()}"
+                     data-director="${m.director.toLowerCase()}"
+                     data-year="${m.year}"
+                     data-category="${m.category}"
+                     data-verdict="${m.verdict}">
+                    <div class="card-image-wrapper">
+                        <img src="posters/${m.poster}.jpg" alt="${m.title}" loading="lazy" decoding="async" 
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 300%22><rect fill=%22%23111%22 width=%22200%22 height=%22300%22/><text fill=%22%23555%22 x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22>${m.poster}</text></svg>'">
+                        <div class="card-year">${m.year}</div>
+                        ${m.verdict !== 'Cameo' && m.verdict !== 'Upcoming' ? `<div class="card-verdict ${getVerdictClass(m.verdict)}">${m.verdict}</div>` : ''}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${m.title}</div>
+                        <div class="card-role">as ${m.role}</div>
+                        <div class="card-meta">
+                            <span><i class="fas fa-user-tie"></i> ${m.director}</span>
+                            ${m.boxOffice ? `<span class="card-boxoffice"><i class="fas fa-coins"></i> ${m.boxOffice}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Drag scroll with momentum
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let velX = 0;
+            let animationID;
+
+            track.addEventListener('mousedown', (e) => {
+                isDown = true;
+                track.style.cursor = 'grabbing';
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+                cancelAnimationFrame(animationID);
+            });
+
+            track.addEventListener('mouseleave', () => {
+                isDown = false;
+                track.style.cursor = 'grab';
+                applyMomentum();
+            });
+
+            track.addEventListener('mouseup', () => {
+                isDown = false;
+                track.style.cursor = 'grab';
+                applyMomentum();
+            });
+
+            track.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                const prevScroll = track.scrollLeft;
+                track.scrollLeft = scrollLeft - walk;
+                velX = track.scrollLeft - prevScroll;
+            });
+
+            function applyMomentum() {
+                if (Math.abs(velX) > 0.5) {
+                    track.scrollLeft += velX;
+                    velX *= 0.95;
+                    animationID = requestAnimationFrame(applyMomentum);
+                }
+            }
+
+            // Touch support with momentum
+            let touchStartX;
+            let touchScrollLeft;
+            let touchVel = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].pageX - track.offsetLeft;
+                touchScrollLeft = track.scrollLeft;
+                touchVel = 0;
+                cancelAnimationFrame(animationID);
+            }, { passive: true });
+
+            track.addEventListener('touchmove', (e) => {
+                const x = e.touches[0].pageX - track.offsetLeft;
+                const walk = (touchStartX - x) * 1.2;
+                const prevScroll = track.scrollLeft;
+                track.scrollLeft = touchScrollLeft + walk;
+                touchVel = track.scrollLeft - prevScroll;
+            }, { passive: true });
+
+            track.addEventListener('touchend', () => {
+                function touchMomentum() {
+                    if (Math.abs(touchVel) > 0.5) {
+                        track.scrollLeft += touchVel;
+                        touchVel *= 0.95;
+                        requestAnimationFrame(touchMomentum);
+                    }
+                }
+                touchMomentum();
+            });
+        }
+
+        function initAbout() {
+            const about = appData.about;
+            const meta = appData.metadata;
+            
+            document.getElementById('aboutText').innerHTML = `
+                <p><strong>${about.fullName}</strong>, affectionately known as <strong style="color:var(--accent);">${about.nickname}</strong> (Commander), stands as the undisputed emperor of Tamil cinema. Born on ${about.born}, Vijay's journey from a reluctant debut in 1992 to becoming the <strong>highest-grossing Tamil actor of all time</strong> is the stuff of legends.</p>
+                <p style="margin-top: 1.5rem;">With a career spanning <strong>${new Date().getFullYear() - 1992} years</strong> and <strong>${meta.totalMovies} films</strong>, he has amassed a box office collection exceeding <strong>${meta.lifetimeGross}</strong>. His 2023 blockbuster <strong>Leo</strong> shattered all records with <strong>${meta.highestGrosser}</strong> worldwide, cementing his status as a global phenomenon.</p>
+                <p style="margin-top: 1.5rem;">Beyond cinema, Vijay launched <strong style="color:var(--accent);">${about.politicalParty}</strong> in ${about.partyFounded}, channeling his massive fan following into a political movement for change in Tamil Nadu.</p>
+            `;
+
+            const total = appData.movies.length;
+            const blockbusters = appData.movies.filter(m => m.verdict === 'Blockbuster' || m.verdict === 'All Time Blockbuster').length;
+            const superhits = appData.movies.filter(m => m.verdict === 'Super Hit').length;
+            const hits = appData.movies.filter(m => m.verdict === 'Hit').length;
+
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-film"></i></div>
+                    <div class="stat-card-value">${total}</div>
+                    <div class="stat-card-label">Total Films</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-crown" style="color:#4ade80;"></i></div>
+                    <div class="stat-card-value">${blockbusters}</div>
+                    <div class="stat-card-label">Blockbusters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-star" style="color:#fbbf24;"></i></div>
+                    <div class="stat-card-value">${superhits}</div>
+                    <div class="stat-card-label">Super Hits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-thumbs-up" style="color:#60a5fa;"></i></div>
+                    <div class="stat-card-value">${hits}</div>
+                    <div class="stat-card-label">Hits</div>
+                </div>
+            `;
+
+            document.getElementById('achievementTags').innerHTML = about.achievements.map(ach => `
+                <div class="achievement-tag">
+                    <i class="fas fa-check-circle"></i> ${ach}
+                </div>
+            `).join('');
+        }
+
+        function filterMovies() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-chip.active')?.dataset.filter || 'all';
+            const cards = document.querySelectorAll('.movie-card');
+            let visible = 0;
+
+            cards.forEach(card => {
+                const title = card.dataset.title;
+                const role = card.dataset.role;
+                const director = card.dataset.director;
+                const year = parseInt(card.dataset.year);
+                const verdict = card.dataset.verdict;
+
+                let filterMatch = false;
+                if (activeFilter === 'all') filterMatch = true;
+                else if (activeFilter === 'blockbuster') filterMatch = verdict.includes('Blockbuster') || verdict === 'All Time Blockbuster';
+                else if (activeFilter === '2020s') filterMatch = year >= 2020;
+                else if (activeFilter === '2010s') filterMatch = year >= 2010 && year < 2020;
+                else if (activeFilter === '2000s') filterMatch = year >= 2000 && year < 2010;
+                else if (activeFilter === '90s') filterMatch = year < 2000;
+
+                const searchMatch = title.includes(query) || role.includes(query) || director.includes(query);
+
+                if (filterMatch && searchMatch) {
+                    card.classList.remove('hidden');
+                    card.style.display = 'block';
+                    visible++;
+                } else {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }
+            });
+
+            document.getElementById('noResults').classList.toggle('show', visible === 0);
+        }
+
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initHero();
+            initCarousel();
+            initAbout();
+
+            // Filter chips
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    filterMovies();
+                });
+            });
+
+            // Search
+            let searchTimeout;
+            document.getElementById('searchInput').addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(filterMovies, 100);
+            });
+
+            // Hide loading
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 600);
+        });
+    </script>
 </body>
 </html>

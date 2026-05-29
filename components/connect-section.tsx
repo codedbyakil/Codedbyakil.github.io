@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Mail, MapPin, Send, Github, Instagram } from "lucide-react"
+import { Mail, MapPin, Send, Github, Instagram, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -14,12 +14,38 @@ export function ConnectSection() {
     email: "",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic would go here
-    const mailtoLink = `mailto:akilaskan@gmail.com?subject=Message from ${formData.name}&body=${formData.message}%0A%0AFrom: ${formData.email}`
-    window.open(mailtoLink)
+    setStatus("loading")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "5fef9c36-86e4-4f05-a63f-0d80aec10b70",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          to: "akilaskan@gmail.com",
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setStatus("success")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        setStatus("error")
+      }
+    } catch {
+      setStatus("error")
+    }
   }
 
   return (
@@ -149,10 +175,24 @@ export function ConnectSection() {
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full group">
-              Send Message
+            <Button type="submit" size="lg" className="w-full group" disabled={status === "loading"}>
+              {status === "loading" ? "Sending..." : "Send Message"}
               <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
+
+            {status === "success" && (
+              <div className="flex items-center gap-2 text-green-500 text-sm">
+                <CheckCircle className="h-4 w-4" />
+                Message sent successfully!
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="flex items-center gap-2 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4" />
+                Failed to send. Please try again.
+              </div>
+            )}
           </form>
         </div>
       </div>

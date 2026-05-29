@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { ExternalLink, Star, GitFork } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,6 +11,7 @@ const projects = [
     language: "KOTLIN",
     description: "Public Kotlin repository with Android or media-focused source files.",
     tags: ["Android"],
+    category: "android",
     stars: 0,
     forks: 0,
     updated: "Updated today",
@@ -18,6 +22,7 @@ const projects = [
     language: "M3U",
     description: "Public IPTV or streaming project maintained by codedbyakil.",
     tags: ["M3U", "IPTV"],
+    category: "streaming",
     stars: 2,
     forks: 3,
     updated: "Updated today",
@@ -28,6 +33,7 @@ const projects = [
     language: "HTML",
     description: "Public portfolio website and web assets maintained by codedbyakil.",
     tags: ["HTML"],
+    category: "other",
     stars: 0,
     forks: 0,
     updated: "Updated recently",
@@ -38,6 +44,7 @@ const projects = [
     language: "KOTLIN",
     description: "Public Kotlin repository with Android or media-focused source files.",
     tags: ["Android"],
+    category: "android",
     stars: 0,
     forks: 0,
     updated: "May 17, 2026",
@@ -48,6 +55,7 @@ const projects = [
     language: "KOTLIN",
     description: "Public Kotlin repository with Android or media-focused source files.",
     tags: ["Kotlin", "Android"],
+    category: "android",
     stars: 0,
     forks: 0,
     updated: "May 10, 2026",
@@ -58,6 +66,7 @@ const projects = [
     language: "M3U",
     description: "Public IPTV or streaming project maintained by codedbyakil.",
     tags: ["M3U", "IPTV"],
+    category: "streaming",
     stars: 1,
     forks: 0,
     updated: "May 2, 2026",
@@ -65,7 +74,19 @@ const projects = [
   },
 ]
 
+const tabs = [
+  { id: "overview", label: "Overview" },
+  { id: "android", label: "Android" },
+  { id: "streaming", label: "Streaming" },
+]
+
 export function ProjectsSection() {
+  const [activeTab, setActiveTab] = useState("overview")
+
+  const filteredProjects = activeTab === "overview" 
+    ? projects 
+    : projects.filter(project => project.category === activeTab)
+
   return (
     <section id="projects" className="py-24 bg-secondary/30">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -80,8 +101,27 @@ export function ProjectsSection() {
           </p>
         </div>
 
+        {/* Tab Switcher */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex rounded-lg border border-border bg-card p-1">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
+                  activeTab === tab.id
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <article
               key={project.name}
               className="group flex flex-col p-6 rounded-xl border border-border bg-card hover:border-accent/50 transition-all duration-300"
